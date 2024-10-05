@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapAirdrops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Скрытие прокрутки, но оставление возможности скролла */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center p-4">
+        <h1 class="text-xl font-bold">MapAirdrops</h1>
+        <!-- Круглая фотография вместо кнопки логина -->
+        <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white">
+    </header>
+
+    <!-- Search Bar -->
+    <div class="px-4">
+        <input type="text" placeholder="Search airdrops" class="w-full px-4 py-2 rounded-full bg-gray-800 text-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500">
+    </div>
+
+    <!-- Image Placeholder -->
+    <div class="mt-4 px-4">
+        <div class="w-full h-48 bg-gray-300 rounded-md flex justify-center items-center text-gray-500">
+            300 x 200
+        </div>
+    </div>
+
+    <!-- Popular Categories (Slider) -->
+    <div class="mt-6 bg-gray-800 py-4">
+        <h2 class="text-center text-lg font-semibold">Popular Categories</h2>
+        <div id="categorySlider" class="flex overflow-x-scroll scrollbar-hide space-x-2 px-4 mt-4">
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full whitespace-nowrap">NFTs</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full whitespace-nowrap">Exclusive</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full whitespace-nowrap">DeFi</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full whitespace-nowrap">Gaming</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full whitespace-nowrap">Metaverse</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full whitespace-nowrap">Airdrops</button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bg-gray-800 fixed bottom-0 left-0 right-0 flex justify-around py-2">
+        <a href="#" class="flex flex-col items-center text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2 7-7 7 7 2 2v8a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <span class="text-xs">Home</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5A7 7 0 1 1 7 7a7 7 0 0 1 10 10z"/></svg>
+            <span class="text-xs">Explore</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2 7-7 7 7 2 2v8a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <span class="text-xs">Notifications</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4m0 4h.01m-6.938 4h13.856A2.006 2.006 0 0 0 20 18.938V5.062A2.006 2.006 0 0 0 18.938 3H5.062A2.006 2.006 0 0 0 3 5.062v13.876A2.006 2.006 0 0 0 5.062 21z"/></svg>
+            <span class="text-xs">Settings</span>
+        </a>
+    </nav>
+
+    <!-- JavaScript для свайпа -->
+    <script>
+        const slider = document.getElementById('categorySlider');
+let scrollAmount = 0;
+
+function autoScroll() {
+    if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
+        scrollAmount = 0;
+    } else {
+        scrollAmount += 2;  // Скорость прокрутки
+    }
+    slider.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+// Автоматическая прокрутка слайдера
+setInterval(autoScroll, 30);  // Интервал для плавной прокрутки
+    </script>
+
+</body>
+</html>
